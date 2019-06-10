@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Curso>
+
+@{
+    ViewBag.Title = "Cursos";
+}
+
+<h2>Cursos</h2>
+
+<p>
+    @Html.ActionLink("Adicionar Novo", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Selecionar Departamento: @Html.DropDownList("SelectedDepartment", "All")
+        <input type="submit" value="Filtrar" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CursoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creditos)
+        </th>
+        <th>
+            Department
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CursoID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creditos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamento.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CursoID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.CursoID }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.CursoID })
+            </td>
+        </tr>
+    }
+
+</table>

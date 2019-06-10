@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Departamento>
+@{
+    ViewBag.Title = "Departamentos";
+}
+<h2>Departamentos</h2>
+<p>
+    @Html.ActionLink("Adicionar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Despesas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            Administrator
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Despesas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Administrador.NomeCompleto)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.DepartamentoID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.DepartamentoID }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.DepartamentoID })
+            </td>
+        </tr>
+    }
+</table>

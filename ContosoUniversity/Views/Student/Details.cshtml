@@ -1,0 +1,63 @@
+﻿@model ContosoUniversity.Models.Aluno
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+    <h2>Detalhes</h2>
+
+<div>
+    <h4>Aluno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimoNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimoNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimeiroNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimeiroNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataMatricula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataMatricula)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Matriculas)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Nome do Curso</th>
+                    <th>Grade</th>
+                </tr>
+                @foreach (var item in Model.Matriculas)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Curso.Titulo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Grade)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Voltar a listagem", "Index")
+</p>
